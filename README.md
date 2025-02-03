@@ -1,6 +1,6 @@
 Phishing Data Processor
 
-This Python script processes a CSV file containing phishing-related data, extracts IP addresses, checks them against Microsoft IPs using curl, and filters out false positives. It also ensures that if an email appears twice (once for a "clicked link" and once for "submitted data"), only the "submitted data" row is kept.
+This Python script processes a CSV file containing GoPhish-related data, extracts IP addresses, checks them against Microsoft IPs using curl, and filters out false positives. It also ensures that if an email appears twice (once for a "clicked link" and once for "submitted data"), only the "submitted data" row is kept.
 Features
 
 ✅ Extracts IP addresses from a "details" column.
