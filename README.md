@@ -25,7 +25,7 @@ Usage
 
 Run the script and enter the input/output CSV file names:
 
-python extract_ips.py
+    python extract_ips.py
 
 You will be prompted to enter the filenames, for example:
 
