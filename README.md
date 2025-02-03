@@ -31,15 +31,7 @@ You will be prompted to enter the filenames, for example:
 Please enter the name of the input CSV file: input.csv
 Please enter the name of the output CSV file: output.csv
 
-CSV Format (Before Processing)
-email	message	details
-user1@test.com	clicked link	{"address":"40.76.4.10"}
-user1@test.com	submitted data	{"address":"40.76.4.10"}
-user2@test.com	clicked link	{"address":"8.8.8.8"}
-CSV Format (After Processing)
-email	message	IP Address	notes
-user1@test.com	submitted data	40.76.4.10	
-user2@test.com	clicked link	8.8.8.8	
+
 How It Works
 
     Extracts the IP address from the "details" column.
