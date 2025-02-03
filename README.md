@@ -11,9 +11,10 @@ Features
 
 Installation
 
-    Clone the repository
 
-git clone https://github.com/yourusername/phishing-data-processor.git
+    git clone https://github.com/yourusername/phishing-data-processor.git
+
+    
 cd phishing-data-processor
 
 Install dependencies
