@@ -33,16 +33,6 @@ How to Use:
 
 Example:
 
-Input CSV (input.csv):
-email	message	details
-example1@test.com	Hello	{"address":"8.8.8.8", "message":"test"}
-example2@test.com	Hi	{"address":"40.76.4.10", "message":"test"}
-
-Output CSV (output.csv):
-email	message	IP Address	notes
-example1@test.com	Hello	8.8.8.8	
-example2@test.com	Hi	40.76.4.10	false-positive
-
 
 
 ![image](https://github.com/user-attachments/assets/2b15d6b0-f073-48ed-906a-7b024a33e4e9)
