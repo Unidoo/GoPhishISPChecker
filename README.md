@@ -1,37 +1,62 @@
+Phishing Data Processor
 
-IP WHOIS Lookup with False-Positive Detection
+This Python script processes a CSV file containing phishing-related data, extracts IP addresses, checks them against Microsoft IPs using curl, and filters out false positives. It also ensures that if an email appears twice (once for a "clicked link" and once for "submitted data"), only the "submitted data" row is kept.
+Features
 
-This Python script processes a CSV file containing details about IP addresses, extracts those IPs, performs WHOIS lookups, and flags potential "false-positives" related to Microsoft (MSFT). It features a progress bar for monitoring the processing status, and the results are saved in a new CSV file with an additional "notes" column indicating whether the IP was identified as a false-positive.
-Features:
+✅ Extracts IP addresses from a "details" column.
+✅ Checks IP ownership using curl -s https://ipinfo.io/<IP>/org.
+✅ Identifies Microsoft IPs (AS8075 Microsoft Corporation) and marks "clicked link" rows as false positives.
+✅ Filters duplicate emails, keeping "submitted data" rows and removing corresponding "clicked link" rows.
+✅ Displays a progress bar while processing IP lookups.
 
-    CSV Input/Output: The script reads from a CSV file with columns like email, message, and details, and writes to a new CSV file with an additional notes column.
-    WHOIS Lookup: For each IP address, a WHOIS query is made asynchronously, and it checks three fields (NetName, OrgName, OrgId) to flag any IPs associated with Microsoft.
-    False-Positive Detection: If the WHOIS data contains:
-        NetName: MSFT
-        OrgName: Microsoft Corporation
-        OrgId: MSFT The script flags the entry as a "false-positive" in the notes column.
-    Progress Bar: A dynamic progress bar (via tqdm) tracks the number of processed IPs, providing a real-time status update every second.
+Installation
 
-Requirements:
+    Clone the repository
 
-    Python 3
-    tqdm library for progress tracking. You can install it using:
+git clone https://github.com/yourusername/phishing-data-processor.git
+cd phishing-data-processor
+
+Install dependencies
 
     pip install tqdm
 
-    whois command-line tool must be installed on your system.
+Usage
 
-How to Use:
+Run the script and enter the input/output CSV file names:
 
-    Place your input CSV file (e.g., input.csv) in the same directory as the script.
-    Run the script:
+python extract_ips.py
 
-    python ip_whois_lookup.py
+You will be prompted to enter the filenames, for example:
 
-    The script will prompt you to enter the input and output CSV file names.
-    The processed data with the "false-positive" flags will be saved in the specified output CSV file.
+Please enter the name of the input CSV file: input.csv
+Please enter the name of the output CSV file: output.csv
 
-Example:
+CSV Format (Before Processing)
+email	message	details
+user1@test.com	clicked link	{"address":"40.76.4.10"}
+user1@test.com	submitted data	{"address":"40.76.4.10"}
+user2@test.com	clicked link	{"address":"8.8.8.8"}
+CSV Format (After Processing)
+email	message	IP Address	notes
+user1@test.com	submitted data	40.76.4.10	
+user2@test.com	clicked link	8.8.8.8	
+How It Works
+
+    Extracts the IP address from the "details" column.
+    Runs curl to check the IP’s organization.
+    If "AS8075 Microsoft Corporation" appears, marks the "clicked link" row as a false positive.
+    If an email appears with both "clicked link" and "submitted data" rows, keeps only the "submitted data" row.
+    Writes the cleaned data to the output CSV file.
+
+Notes
+
+    "Submitted data" rows are not marked as false positives, even if they contain a Microsoft IP.
+    The script uses a 10-second timeout for curl to avoid long waits.
+    The progress bar updates as IPs are checked.
+
+License
+
+MIT License – Feel free to modify and use!
 
 
 
