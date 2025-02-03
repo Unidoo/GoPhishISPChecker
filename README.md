@@ -12,7 +12,7 @@ Features
 Installation
 
 
-    git clone https://github.com/yourusername/phishing-data-processor.git
+    git clone https://github.com/unidoo/GoPhishISPChecker.git
 
     
 cd phishing-data-processor
