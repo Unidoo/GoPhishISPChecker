@@ -15,7 +15,7 @@ Installation
     git clone https://github.com/unidoo/GoPhishISPChecker.git
 
     
-cd phishing-data-processor
+    cd phishing-data-processor
 
 Install dependencies
 
@@ -25,7 +25,7 @@ Usage
 
 Run the script and enter the input/output CSV file names:
 
-    python extract_ips.py
+    python3 extract_ips.py
 
 You will be prompted to enter the filenames, for example:
 
